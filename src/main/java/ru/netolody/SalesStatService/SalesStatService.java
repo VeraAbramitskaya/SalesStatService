@@ -11,21 +11,21 @@ public class SalesStatService {
     }
 
     public int averageSales(int[] sales) { // 2. средняя сумма продаж = сумма продаж/длину массива
-
-        int sum = 0;
-        int average = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sum = sum + sales[i];
-        }
-        average = sum / sales.length;
-        return average;
+        int sum = totalSales(sales);  // в переменную sum положим результат вызова метода totalSales
+        // int sum = 0;
+        // int average;
+        // for (int i = 0; i < sales.length; i++) {
+        // sum = sum + sales[i];
+        //int average = sum / sales.length;
+        return sum / sales.length;
     }
 
     public int maxSalesMonth(int[] sales) { // 3. номер месяца, в котором были максимальные продажи
 
-        int maxMonth = 0;
+        int maxMonth=0;
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] > sales[maxMonth]) {
+        //for (int sale:sales){
+           if (sales[i] >= sales[maxMonth]) {
                 maxMonth = i;
             }
         }
@@ -35,7 +35,7 @@ public class SalesStatService {
     public int minSalesMonth(int[] sales) { // 4. номер месяца, в котором были минимальные продажи
         int minMonth = 0;
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] < sales[minMonth]) {
+            if (sales[i] <= sales[minMonth]) {
                 minMonth = i;
             }
         }
@@ -44,31 +44,31 @@ public class SalesStatService {
 
 
     public int salesLessAverage(int[] sales) { // 5. количество месяцев, в которых продажи ниже среднего
-        int sum = 0;
-        int average = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sum = sum + sales[i];
-        }
-        average = sum / sales.length;
+        int average = averageSales(sales);
+        //int sum = 0;
+        // int average = 0;
+        //for (int i = 0; i < sales.length; i++) {
+        // sum = sum + sales[i];
+        //average = sum / sales.length;
+        //}
 
         int monthQuantity = 0;
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] < average) {
                 monthQuantity++;
             }
-
         }
-
         return monthQuantity;
     }
 
     public int salesAboveAverage(int[] sales) { // 6. количество месяцев, в которых продажи выше среднего
-        int sum = 0;
-        int average = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sum = sum + sales[i];
-        }
-        average = sum / sales.length;
+        int average = averageSales(sales);
+        //int sum = 0;
+        //int average = 0;
+        //for (int i = 0; i < sales.length; i++) {
+          //  sum = sum + sales[i];
+        //}
+        //average = sum / sales.length;
 
         int monthQuantity = 0;
         for (int i = 0; i < sales.length; i++) {

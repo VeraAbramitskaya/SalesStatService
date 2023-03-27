@@ -29,7 +29,7 @@ public class SalesStatServiceTest {
     @Test
     public void maxSalesMonth() {
         SalesStatService service = new SalesStatService();
-        int[] sales = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300};
+        int[] sales = {10, 20, 30, 300, 50, 60, 70, 80, 90, 100, 200, 300};
         int expectMaxSalesMonth = 12;
         int actualMaxSalesMonth = service.maxSalesMonth(sales);
 
@@ -39,8 +39,8 @@ public class SalesStatServiceTest {
     @Test
     public void minSalesMonth() {
         SalesStatService service = new SalesStatService();
-        int[] sales = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300};
-        int expectMinSalesMonth = 1;
+        int[] sales = {10, 20, 30, 40, 50, 60, 70, 80, 90, 10, 200, 300};
+        int expectMinSalesMonth = 10;
         int actualMinSalesMonth = service.minSalesMonth(sales);
 
         Assertions.assertEquals(expectMinSalesMonth, actualMinSalesMonth);
